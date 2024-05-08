@@ -9,5 +9,5 @@ services:
     tty: true
     container_name: nginx
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/sites-available/default
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./:/var/www/html
