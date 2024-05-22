@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partytown Test</title>
+
+  <!-- Partytown script -->
+  <script src="public/partytown/partytown.js"></script>
+  <script>
+    partytown = {
+        forward: ['dataLayer.push'],
+        resolveUrl: function (url, location, type) {
+            if (type === 'script') {
+            var proxyUrl = new URL('https://my-reverse-proxy.com/');
+            proxyUrl.searchParams.append('url', url.href);
+            return proxyUrl;
+            }
+            return url;
+        }
+    };
+  </script>
+  <script type="text/partytown">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.defer=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-T6N6X7Q');
+  </script>
+</head>
+<body>
+  <button type="button">Test the partytown</button>
+</body>
+</html>
